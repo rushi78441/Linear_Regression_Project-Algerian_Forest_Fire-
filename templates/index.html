@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Linear Regression Project</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-100">
+  <header class="bg-blue-600 text-white p-4">
+    <div class="flex flex-col items-center justify-center">
+      <h1 class="text-3xl font-bold text-center">Linear Regression Project</h1>
+      <p class="text-center mt-2">Predicting the FWI(Fire Wheather index) based on values of below properties. </p>
+    </div>
+  </header>
+  <main>
+  <form action="{{url_for('predict_FWI')}}" method="post" class="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    <label>Temp : (temperature max)  in Celsius degrees: 22 to 42</label>
+    <input type="number" name="Temp" placeholder="Temperature" class="w-full p-2 border border-gray-300 rounded mt-2 mb-4" required>
+        <label>RH : Relative Humidity in %: 21 to 90</label>
+    <input type="number" name="RH" placeholder="RH" class="w-full p-2 border border-gray-300 rounded mt-2 mb-4" required>
+        <label>Ws :Wind speed in km/h: 6 to 29 </label>
+    <input type="number" name="Ws" placeholder="Ws" class="w-full p-2 border border-gray-300 rounded mt-2 mb-4" required>
+        <label>Rain: total day in mm: 0 to 16.8</label>
+    <input type="number" name="Rain" placeholder="Rain" class="w-full p-2 border border-gray-300 rounded mt-2 mb-4" required>
+        <label>Fine Fuel Moisture Code (FFMC) index from the FWI system: 28.6 to 92.5 </label>
+    <input type="number" name="FFMC" placeholder="FFMC" class="w-full p-2 border border-gray-300 rounded mt-2 mb-4" required>
+        <label>Duff Moisture Code (DMC) index from the FWI system: 1.1 to 65.</label>
+    <input type="number" name="DMC" placeholder="DMC" class="w-full p-2 border border-gray-300 rounded mt-2 mb-4" required>
+        <label>Initial Spread Index (ISI) index from the FWI system: 0 to 18.</label>
+    <input type="number" name="ISI" placeholder="ISI" class="w-full p-2 border border-gray-300 rounded mt-2 mb-4" required>
+        <label>Classes: two classes, namely  fired and not fired</label><br>
+    <input type="radio" name="Classes" value="1" required>Fired<br>
+    <input type="radio" name="Classes" value="0" required>Not Fired<br><br>
+       <label>Regions: two regions, namely  Siddi-bell and Bajaia</label><br>
+    <input type="radio" name="Regions" value="1" required>Siddi-bell<br>
+    <input type="radio" name="Regions" value="0" required>Bajaia<br><br><br><br>
+    <button type="submit" class="bg-blue-400 rounded-md py-2 px-4 duration-200 border-2 hover:bg-transparent hover:border-blue-400 hover:border-2">Predict FWI</button>
+  </form>
+      <h2 class="max-w-lg mx-auto rounded-lg text-xl border-black text-center p-2 border-2 bg-white mt-6 mb-6">Predicted FWI = {{ prediction_fwi }}</h2>
+    </main>
+</body>
+</html>
